@@ -11,6 +11,7 @@
     <modules>
         <module>MybatisProject</module>
         <module>SpringProject</module>
+        <module>EncryptionAndDecryption</module>
     </modules>
 
 
