@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
 <mapper namespace="com.lgd.model.mapper.ResultshowMapper" >
+
   <resultMap id="BaseResultMap" type="com.lgd.model.pojo.Resultshow" >
     <id column="time" property="time" jdbcType="VARCHAR" />
     <result column="roadgateNode" property="roadgatenode" jdbcType="INTEGER" />
     <result column="monitorNode" property="monitornode" jdbcType="INTEGER" />
     <result column="alarmNode" property="alarmnode" jdbcType="INTEGER" />
   </resultMap>
+
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

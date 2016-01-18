@@ -10,7 +10,7 @@
     <!--
         G:\\githubSource\\JavaFrames\\MybatisProject\\src\\main\\resources\\mybatis\\
     -->
-    <properties resource="generator.properties"></properties>
+    <properties resource="classpath:/mybatis/db.properties"></properties>
 
     <!--指定特定数据库的jdbc驱动jar包的位置 -->
     <!--<classPathEntry location="${mysql.driverLocation}" />-->

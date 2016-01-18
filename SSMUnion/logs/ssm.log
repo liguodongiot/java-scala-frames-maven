@@ -1,0 +1,16 @@
+[INFO] [2016-01-18 20:34:25][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from URL [file:/G:/githubSource/JavaFrames/SSMUnion/target/classes/config/spring-mybatis-cfg.xml]
+[INFO] [2016-01-18 20:34:27][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@766b42: startup date [Mon Jan 18 20:34:27 CST 2016]; root of context hierarchy
+[INFO] [2016-01-18 20:34:27][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [properties/jdbc.properties]
+[INFO] [2016-01-18 20:34:27][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO] [2016-01-18 20:34:29][students.StudentsTest]开始执行...
+[INFO] [2016-01-18 20:34:30][students.StudentsTest]{"id":1,"name":"liguodong","salary":1000}
+[INFO] [2016-01-18 20:34:30][students.StudentsTest]结束执行...
+[INFO] [2016-01-18 20:34:30][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@766b42: startup date [Mon Jan 18 20:34:27 CST 2016]; root of context hierarchy
+[INFO] [2016-01-18 21:38:15][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from URL [file:/G:/githubSource/JavaFrames/SSMUnion/target/classes/config/spring-mybatis-cfg.xml]
+[INFO] [2016-01-18 21:38:16][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@e37fe5: startup date [Mon Jan 18 21:38:16 CST 2016]; root of context hierarchy
+[INFO] [2016-01-18 21:38:16][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [properties/jdbc.properties]
+[INFO] [2016-01-18 21:38:16][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO] [2016-01-18 21:38:17][students.StudentsTest]开始执行...
+[INFO] [2016-01-18 21:38:19][students.StudentsTest]{"id":1,"name":"liguodong","salary":1000}
+[INFO] [2016-01-18 21:38:19][students.StudentsTest]结束执行...
+[INFO] [2016-01-18 21:38:19][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@e37fe5: startup date [Mon Jan 18 21:38:16 CST 2016]; root of context hierarchy
