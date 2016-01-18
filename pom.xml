@@ -12,6 +12,8 @@
         <module>MybatisProject</module>
         <module>SpringProject</module>
         <module>EncryptionAndDecryption</module>
+        <module>MavenProject</module>
+        <module>SSMUnion</module>
     </modules>
 
 
