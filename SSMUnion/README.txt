@@ -46,12 +46,12 @@ Log4j的配置
 我们也可以控制每一条日志的输出格式；通过定义每一条日志信息的级别，
 我们能够更加细致地控制日志的生成过程。
 
-resources/properties/log4j.properties
+resources/log4j.properties
 
 
 
 
-
-
+配置SpringMVC
+resources/config/spring-mvc-cfg.xml
 
 
