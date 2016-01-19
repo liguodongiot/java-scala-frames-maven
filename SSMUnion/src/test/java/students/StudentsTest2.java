@@ -5,32 +5,34 @@ import com.lgd.model.pojo.Students;
 import com.lgd.service.IStudentsService;
 import org.apache.log4j.Logger;
 import org.junit.Test;
+
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import util.logger.JUnit4ClassRunner;
 
 import javax.annotation.Resource;
 
 
+
 /**
+ * 对比StudentsTest和StudentsTest2
  *
- * 测试类中注释掉的部分是不使用Spring时，
- * 一般情况下的一种测试方法；如果使用了Spring那么就可以使用注解的方式来
- * 引入配置文件和类，然后再将service接口对象注入，就可以进行测试了。
- * 如果测试成功，表示Spring和Mybatis已经整合成功了。
- * 输出信息使用的是Log4j打印到控制台。
+ * StudentsTest（需要将log4j.properties放在resource目录下）
+ * @RunWith(SpringJUnit4ClassRunner.class)
+ *
+ *
+ * StudentsTest2
+ * 自己实现了JUnit4ClassRunner类，指定log4j.properties的位置
+ * @RunWith(JUnit4ClassRunner.class)
  *
  *
  * Created by liguodong on 2016/1/18.
  */
 
-//表示继承了SpringJUnit4ClassRunner类
-@RunWith(SpringJUnit4ClassRunner.class)
-
+@RunWith(JUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath*:/config/spring-mybatis-cfg.xml"})
-public class StudentsTest {
-    private static Logger logger = Logger.getLogger(StudentsTest.class);
+public class StudentsTest2 {
+    private static Logger logger = Logger.getLogger(StudentsTest2.class);
 
     //	private ApplicationContext ac = null;
 
