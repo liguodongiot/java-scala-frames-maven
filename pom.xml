@@ -14,6 +14,10 @@
         <module>EncryptionAndDecryption</module>
         <module>MavenProject</module>
         <module>SSMUnion</module>
+        <module>CollectionProject</module>
+        <module>JavaPage</module>
+        <module>MavenInstallProject</module>
+        <module>JettyProject</module>
     </modules>
 
 
