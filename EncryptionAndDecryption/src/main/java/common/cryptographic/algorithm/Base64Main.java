@@ -15,22 +15,25 @@ import java.io.IOException;
 public class Base64Main {
 
     //需要加密的原始的字符串
-    public static String src = "Java is a good language.";
+    public static String src = "liguodong74";
 
 
 
     public static void main(String[] args) throws IOException {
 
-        //base64ForJDK();
+        base64ForJDK();
 
-        base64ForCommonCodes();
+        //base64ForCommonCodes();
 
         //base64ForBouncyCastle();
     }
 
     public static void base64ForJDK() throws IOException {
         BASE64Encoder encoder = new BASE64Encoder();
-        String encode = encoder.encode(src.getBytes());
+
+        //String encode = encoder.encode(src.getBytes());
+        String encode = "bGlndW9kb25nNzQ=";
+
         System.out.println("encode:"+encode);
 
         BASE64Decoder decoder = new BASE64Decoder();
