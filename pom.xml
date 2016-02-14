@@ -20,6 +20,9 @@
         <module>JettyProject</module>
         <module>AnnocationProject</module>
         <module>CommonUtils</module>
+        <module>ThreadProject</module>
+        <module>SparkProject</module>
+        <module>Java8Project</module>
     </modules>
 
 
