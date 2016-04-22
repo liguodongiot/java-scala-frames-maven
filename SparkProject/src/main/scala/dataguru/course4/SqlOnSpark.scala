@@ -1,18 +1,23 @@
 package dataguru.course4
 
-import org.apache.spark.rdd.RDD
+
 import org.apache.spark.{SparkConf, SparkContext}
-import org.apache.spark.sql.SQLContext
+
 
 /**
  * Created by liguodong on 2016/2/2.
  */
 
+
+
+// Define the schema using a case class.
+// Note: Case classes in Scala 2.10 can support only up to 22 fields. To work around this limit,
+// you can use custom classes that implement the Product interface.
 case class Person(name: String, age: Int)
 
 object SqlOnSpark {
   def main(args: Array[String]) {
-    val conf = new SparkConf().setAppName("SqlOnSpark")
+    val conf = new SparkConf().setAppName("SqlOnSpark").setMaster("local")
     val sc = new SparkContext(conf)
 
     // sc is an existing SparkContext.
@@ -21,13 +26,9 @@ object SqlOnSpark {
     // this is used to implicitly convert an RDD to a DataFrame.
     import sqlContext.implicits._
 
-    // Define the schema using a case class.
-    // Note: Case classes in Scala 2.10 can support only up to 22 fields. To work around this limit,
-    // you can use custom classes that implement the Product interface.
-    case class Person(name: String, age: Int)
 
     // Create an RDD of Person objects and register it as a table.
-    val people = sc.textFile("examples/src/main/resources/people.txt")
+    val people = sc.textFile("D:\\people.txt")
       .map(_.split(","))
       .map(p => Person(p(0), p(1).trim.toInt))
       .toDF()

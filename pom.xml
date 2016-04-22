@@ -23,6 +23,7 @@
         <module>ThreadProject</module>
         <module>SparkProject</module>
         <module>Java8Project</module>
+        <module>KafkaTask</module>
     </modules>
 
 
