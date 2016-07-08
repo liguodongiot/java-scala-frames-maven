@@ -5,9 +5,7 @@ package com.lgd.regex;
  */
 public class Main {
 
-    public static String[] logline ={
-
-    };
+    public static String[] logline ={};
 
     public static String regex = "(deal_id=)([0-9]{0,})";
 
