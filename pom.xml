@@ -24,6 +24,7 @@
         <module>SparkProject</module>
         <module>Java8Project</module>
         <module>KafkaTask</module>
+        <module>IOProject</module>
     </modules>
 
 
