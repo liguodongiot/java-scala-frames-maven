@@ -11,6 +11,13 @@
 
     <groupId>com.lgd.frames.common</groupId>
     <artifactId>CommonUtils</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations-java5</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+    </dependencies>
 
 
 </project>

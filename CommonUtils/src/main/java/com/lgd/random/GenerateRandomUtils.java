@@ -1,5 +1,7 @@
 package com.lgd.random;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -81,12 +83,14 @@ public class GenerateRandomUtils {
     }
 
 
+
     public static Double generateRandomDouble(int range)
     {
         Random random = new Random();
 
         return random.nextDouble()*range;
     }
+
 
     public static Float generateRandomFloat(int range)
     {
