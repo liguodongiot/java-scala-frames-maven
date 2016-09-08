@@ -23,7 +23,7 @@ public class TraditionalTimerTest {
             }
         },10000,3000);*/
 
-
+        //两秒炸一下，4秒炸一下
         new Timer().schedule(new MyTimerTask(),2000);
 
 
