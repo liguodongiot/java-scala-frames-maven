@@ -7,27 +7,25 @@ public class TraditionalThreadSynchronized {
 
     //在静态方法中，不能new内部类的实例对象
     //因为内部类，能够访问外部类的成员变量，一旦能够访问外部类的成员变量，
-    //那么肯定存在外部类实例对象，因为静态方法可以不用new实例对象出来。
+    //那么肯定存在外部类实例对象，因此，静态方法可以不用new实例对象出来。
     public static void main(String[] args) {
 
         new TraditionalThreadSynchronized().init();
 
         /**
          * output:
-         *
          *  liguodong
          *  liguodonearth
          *  g
          *  earth
          */
-
-
     }
 
 
     public void init(){
         final OutPuter outPuter = new OutPuter();
 
+        //线程1
         new Thread(new Runnable() {
             public void run() {
                 while(true){
@@ -36,11 +34,13 @@ public class TraditionalThreadSynchronized {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    outPuter.output("liguodong");
+                    outPuter.output3("liguodong");
                 }
             }
         }).start();
 
+
+        //线程2
         new Thread(new Runnable() {
             public void run() {
                 while(true){
@@ -89,9 +89,6 @@ public class TraditionalThreadSynchronized {
                 System.out.print(name.charAt(i));
             }
             System.out.println();
-
         }
-
     }
-
 }
