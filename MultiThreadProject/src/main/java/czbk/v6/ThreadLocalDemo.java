@@ -14,9 +14,12 @@ import java.util.Random;
  */
 public class ThreadLocalDemo {
 
+    //一个变量
     private static ThreadLocal<Integer> x = new ThreadLocal<Integer>();
 
-    private static ThreadLocal<MyThreadScopeData> myThreadScopeData = new ThreadLocal<MyThreadScopeData>();
+    //多个变量
+    private static ThreadLocal<MyThreadScopeData> myThreadScopeData =
+            new ThreadLocal<MyThreadScopeData>();
 
 
     public static void main(String[] args) {
@@ -29,9 +32,11 @@ public class ThreadLocalDemo {
                             + " has put data :" + data);
                     x.set(data);
 
+                    //多个变量封装成一个实体
                     MyThreadScopeData myData = new ThreadLocalDemo().new MyThreadScopeData();
                     myData.setName("Name:"+data);
                     myData.setAge(data);
+
                     myThreadScopeData.set(myData);
 
                     new A().get();

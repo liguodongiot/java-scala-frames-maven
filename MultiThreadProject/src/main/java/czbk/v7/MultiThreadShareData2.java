@@ -14,7 +14,7 @@ public class MultiThreadShareData2 {
     public static void main(String[] args) {
 
 
-        final ShareData3 data3 = new ShareData3();
+        //final ShareData3 data3 = new ShareData3();
 
         //Runnable作为内部类
         new Thread(new Runnable() {
@@ -39,9 +39,11 @@ class ShareData3 {
     private int j=0;
     public synchronized void increment(){
         j++;
+        System.out.println("++"+j);
     }
 
     public synchronized void decrement(){
         j--;
+        System.out.println("--"+j);
     }
 }

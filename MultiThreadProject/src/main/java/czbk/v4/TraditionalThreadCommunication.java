@@ -6,7 +6,7 @@ package czbk.v4;
  * Created by liguodong on 2016/2/29.
  *
  * 两个线程执行的代码片段要实现同步互斥的效果，他们必须用同一个对象。
- * 锁是上在代表要操作额资源的类的内部方法中，而不是线程代码中。
+ * 锁是上在代表要操作资源的类的内部方法中，而不是线程代码中。
  */
 public class TraditionalThreadCommunication {
 

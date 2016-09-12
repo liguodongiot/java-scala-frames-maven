@@ -21,6 +21,7 @@ package czbk.v7;
  */
 public class MultiThreadShareData {
 
+    //执行的代码相同
     /*
     public static void main(String[] args) {
         ShareData1 data1 = new ShareData1();
@@ -53,7 +54,7 @@ public class MultiThreadShareData {
 }
 
 //////////////////////////////////
-
+//执行的代码相同
 class ShareData1 implements Runnable{
 
 
@@ -71,6 +72,7 @@ class ShareData1 implements Runnable{
 
 
 //////////////////////////////////
+//执行的代码不同
 
 /**
  * 将需要共享的数据封装成一个对象，

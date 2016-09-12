@@ -13,7 +13,9 @@ import java.util.Random;
 public class ThreadScopeShareData {
 
     private static int data = 0;
+
     private static Map<Thread, Integer> threadData = new HashMap<Thread, Integer>();
+
     public static void main(String[] args) {
         for(int i=0;i<3;i++){
             new Thread(new Runnable(){

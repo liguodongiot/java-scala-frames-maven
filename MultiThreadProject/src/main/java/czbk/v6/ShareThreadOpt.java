@@ -4,10 +4,12 @@ import java.util.Random;
 
 /**
  * 创建线程范围内的数据共享。
+ *
+ * 多个变量数据共享（更优雅的方式）
  * Created by liguodong on 2016/3/12.
  */
 public class ShareThreadOpt {
-    private static ThreadLocal<Integer> x = new ThreadLocal<Integer>();
+
 
    //private static ThreadLocal<MyThreadScopeData> myThreadScopeData = new ThreadLocal<MyThreadScopeData>();
 
@@ -20,7 +22,6 @@ public class ShareThreadOpt {
                     int data = new Random().nextInt();
                     System.out.println(Thread.currentThread().getName()
                             + " has put data :" + data);
-                    x.set(data);
 
                     MyThreadScopeData.getThreadInstance().setName("Name: " + data);
                     MyThreadScopeData.getThreadInstance().setAge(data);
@@ -34,9 +35,6 @@ public class ShareThreadOpt {
 
     static class A{
         public void get(){
-            int data = x.get();
-            System.out.println("A from " + Thread.currentThread().getName()
-                    + " get data :" + data);
 
             MyThreadScopeData temp = MyThreadScopeData.getThreadInstance();
             System.out.println("A from " + Thread.currentThread().getName()
@@ -47,9 +45,6 @@ public class ShareThreadOpt {
 
     static class B{
         public void get(){
-            int data = x.get();
-            System.out.println("B from " + Thread.currentThread().getName()
-                    + " get data :" + data);
 
             MyThreadScopeData temp = MyThreadScopeData.getThreadInstance();
             System.out.println("B from " + Thread.currentThread().getName()
@@ -69,13 +64,14 @@ class MyThreadScopeData{
     private MyThreadScopeData(){
     }
 
-    public static  MyThreadScopeData getThreadInstance(){
+    //synchronized不用加线程同步，因为是自己线程去自己线程的数据，
+    // 线程之间互不影响。
+    public static /*synchronized*/ MyThreadScopeData getThreadInstance(){
         MyThreadScopeData instance = map.get();
         if(instance == null){
             instance = new MyThreadScopeData();
             map.set(instance);
         }
-
         return instance;
     }
 

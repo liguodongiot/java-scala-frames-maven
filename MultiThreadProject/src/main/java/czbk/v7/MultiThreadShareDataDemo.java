@@ -18,7 +18,7 @@ public class MultiThreadShareDataDemo {
 
         Inc inc = tt.new Inc();
         Dec dec = tt.new Dec();
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 2; i++) {//创建了4个线程
             Thread t = new Thread(inc);
             t.start();
             t = new Thread(dec);
