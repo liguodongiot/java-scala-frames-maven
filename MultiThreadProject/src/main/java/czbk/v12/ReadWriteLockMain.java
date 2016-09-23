@@ -42,29 +42,32 @@ class Queue3{
 
     public void get(){
         readWriteLock.readLock().lock();
-        System.out.println(Thread.currentThread().getName()+"线程准备读取数据。");
+
         try {
+            System.out.println(Thread.currentThread().getName()+"线程准备读取数据。");
             Thread.sleep(1000);
+            System.out.println(Thread.currentThread().getName()+"线程读取完毕。"+data);
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }finally{
+            readWriteLock.readLock().unlock();
         }
-        System.out.println(Thread.currentThread().getName()+"线程读取完毕。"+data);
-        readWriteLock.readLock().unlock();
+
+
     }
 
     public void  put(Object data){
         readWriteLock.writeLock().lock();
-        System.out.println(Thread.currentThread().getName()+"线程准备写数据。");
+
         try {
+            System.out.println(Thread.currentThread().getName()+"线程准备写数据。");
             Thread.sleep(1000);
+            this.data = data;
+            System.out.println(Thread.currentThread().getName()+"线程写完毕。");
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }finally {
+            readWriteLock.writeLock().unlock();
         }
-        this.data = data;
-        System.out.println(Thread.currentThread().getName()+"线程写完毕。");
-
-        readWriteLock.writeLock().unlock();
     }
-
-
 }
