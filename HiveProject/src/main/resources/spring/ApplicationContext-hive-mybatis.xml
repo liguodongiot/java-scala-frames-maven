@@ -1,0 +1,20 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- myBatis文件 -->
+    <bean id="sqlSessionFactoryHiveMybatis" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="hive-ds"/>
+        <property name="configLocation" value="classpath:mybatis/hive/Mybatis-config-hive.xml"/>
+        <property name="mapperLocations" value="classpath*:mybatis/hive/mapper/*.xml"/>
+
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" id="mapperScannerConfigurerHive">
+        <property name="basePackage" value="com.lgd.jdbc.mapper.hive"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryHiveMybatis"/>
+    </bean>
+
+
+</beans>

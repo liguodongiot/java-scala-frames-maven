@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--配置数据库方言，目前只有mysql和oracle两种-->
+    <properties>
+        <property name="dialect" value="mysql" />
+    </properties>
+    <settings>
+        <!--使全局的映射器禁用缓存-->
+        <setting name="cacheEnabled" value="false" />
+    </settings>
+    <!--<typeAliases>
+        <package name="reportdata.lgd.bvo" />
+        <package name="com.lgd.model.pojo" />
+    </typeAliases>
+    <mappers>
+        &lt;!&ndash;所有mapper文件填写位置&ndash;&gt;
+        <mapper resource="report/lgd/bvo/userLoginMapper.xml" />
+    </mappers>-->
+
+
+
+
+
+
+
+</configuration>

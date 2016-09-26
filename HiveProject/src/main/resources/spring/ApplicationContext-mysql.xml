@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+
+
+    <!--
+        配置datasource
+        Spring的datasource
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+        destroy-method="close"
+        表示当数据库不使用的时候，就把该连接重新放到数据池中，方便下次使用。
+    -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="#{jdbcProperties['mysql.driver']}"/>
+        <property name="jdbcUrl" value="#{jdbcProperties['mysql.url']}"/>
+        <property name="user" value="#{jdbcProperties['mysql.username']}" />
+        <property name="password" value="#{jdbcProperties['mysql.password']}" />
+        <property name="acquireIncrement" value="#{jdbcProperties['c3p0.acquireIncrement']}" />
+        <property name="initialPoolSize" value="#{jdbcProperties['c3p0.initialPoolSize']}" />
+        <property name="minPoolSize" value="#{jdbcProperties['c3p0.minPoolSize']}" />
+        <property name="preferredTestQuery" value="#{jdbcProperties['c3p0.preferredTestQuery']}" />
+        <property name="idleConnectionTestPeriod" value="#{jdbcProperties['c3p0.idleConnectionTestPeriod']}" />
+        <property name="maxStatements" value="#{jdbcProperties['c3p0.maxStatements']}" />
+        <property name="numHelperThreads" value="#{jdbcProperties['c3p0.numHelperThreads']}" />
+        <property name="checkoutTimeout" value="10000" />
+    </bean>
+
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+
+    <!--配置工厂-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation"
+                  value="classpath:/spring/ApplicationContext-spring-mybatis.xml" />
+        <property name="mapperLocations">
+            <list>
+                <value>classpath*:mybatis/mysql/mapper/*.xml</value>
+                <!--可以有多个地方-->
+                <!--<value>classpath*:table/*.xml</value>-->
+            </list>
+        </property>
+    </bean>
+
+    <!-- 配置声明式事务 -->
+    <!-- 事务管理器 -->
+    <bean id="txManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="save" propagation="REQUIRED" />
+            <tx:method name="get" read-only="true" />
+            <tx:method name="*" propagation="REQUIRED" />
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut expression="execution(* com.lgd.jdbc.service.impl.*.*(..))"
+                      id="pointcut" />
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut" />
+    </aop:config>
+
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.lgd.jdbc.mapper.mysql"/>
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+</beans>

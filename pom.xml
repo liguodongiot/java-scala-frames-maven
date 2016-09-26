@@ -16,11 +16,11 @@
         <module>SSMUnion</module>
         <module>CollectionProject</module>
         <module>JavaPage</module>
-        <module>MavenInstallProject</module>
+        <module>HiveProject</module>
         <module>JettyProject</module>
         <module>AnnocationProject</module>
         <module>CommonUtils</module>
-        <module>ThreadProject</module>
+        <module>MultiThreadProject</module>
         <module>SparkProject</module>
         <module>Java8Project</module>
         <module>KafkaTask</module>

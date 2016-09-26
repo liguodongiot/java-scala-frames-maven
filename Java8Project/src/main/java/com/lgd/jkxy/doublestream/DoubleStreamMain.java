@@ -35,7 +35,7 @@ public class DoubleStreamMain {
 
     //集合初始化
     static List<Person> createPerson(){
-        List<Person> people = new ArrayList<>();
+        List<Person> people = new ArrayList<Person>();
         Person p = new Person("巴菲特",Person.Sex.MALE,55,1.66);
         people.add(p);
         p = new Person("风清扬",Person.Sex.MALE,88,1.76);

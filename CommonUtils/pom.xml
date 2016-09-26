@@ -9,6 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <properties>
+        <junit.version>4.10</junit.version>
+    </properties>
+
+
     <groupId>com.lgd.frames.common</groupId>
     <artifactId>CommonUtils</artifactId>
     <dependencies>
@@ -16,6 +21,12 @@
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations-java5</artifactId>
             <version>RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
