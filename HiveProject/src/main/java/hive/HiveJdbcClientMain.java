@@ -1,7 +1,6 @@
 package hive;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 
 import java.sql.*;
 
@@ -14,7 +13,7 @@ import java.sql.*;
  * Created by liguodong on 2016/3/19.
  */
 
-public class HiveJdbcClient {
+public class HiveJdbcClientMain {
     //Hive server 1
     //private static String driverName = "org.apache.hadoop.hive.jdbc.HiveDriver";
     //private static String url = "jdbc:hive://192.168.101.10:10000/default";
@@ -27,7 +26,7 @@ public class HiveJdbcClient {
     private static String sql = "";
     private static ResultSet res;
 
-    private static final Logger log = Logger.getLogger(HiveJdbcClient.class);
+    private static final Logger log = Logger.getLogger(HiveJdbcClientMain.class);
 
     //借助spring
     /*static {
@@ -46,7 +45,6 @@ public class HiveJdbcClient {
         //PropertyConfigurator.configure("MavenInstallProject\\src\\main\\resources\\properties\\log4j.properties");
 
     }
-
     public static void main(String[] args) throws SQLException {
         log.info("start");
         Connection conn = null;
@@ -158,4 +156,5 @@ public class HiveJdbcClient {
             conn = null;
         }
     }
+
 }
