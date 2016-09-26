@@ -113,26 +113,68 @@ Exchanger两个线程的数据交换
 
 ### 18.java5阻塞队列的应用
 ```
+队列包含固定长度的队列和不固定长度的队列。
+ArrayBlockingQueue
 
+BlockingQueueMain
+BlockingQueueCommunication
 ```
 
 ### 19.java5同步集合类的应用
 ```
-
+ArrayBlockingQueue<E> 一个由数组支持的有界阻塞队列。
+ConcurrentHashMap<K,V> 支持获取的完全并发和更新的所期望可调整并发的哈希表。
+ConcurrentLinkedQueue<E> 一个基于链接节点的无界线程安全队列。
+ConcurrentSkipListMap<K,V> 可缩放的并发 ConcurrentNavigableMap 实现。
+ConcurrentSkipListSet<E> 一个基于 ConcurrentSkipListMap 的可缩放并发 NavigableSet 实现。
+CopyOnWriteArrayList<E> ArrayList 的一个线程安全的变体，其中所有可变操作（add、set 等等）都是通过对底层数组进行一次新的复制来实现的。
+CopyOnWriteArraySet<E> 对其所有操作使用内部 CopyOnWriteArrayList 的 Set。
 ```
 
 ### 20.传智播客_张孝祥_空中网挑选实习生的面试题1
 ```
-
+现有的程序代码模拟产生了16个日志对象，并且需要运行16秒，才能打印完这些日志，
+请在程序中增加4个线程去调用parseLog()方法来分别打印这16个日志对象，程序只需要运行4秒即可打印完这些日志对象。
 ```
 
 
 ### 21.传智播客_张孝祥_空中网挑选实习生的面试题2
 ```
-
+现成程序中的Test类中的代码不断产生数据，然后交给TestDo.doSome()方法去处理，
+就好像生产者在不断地产生数据，消费者在不断地消费数据。
+请将程序改造成有10个线程来消费生产者产生的数据，只有上一个消费者消费完之后，下一个消费者才能消费数据，
+下一个消费者是谁都可以，但是要保证这些消费者线程拿到的数据是有顺序的。
 ```
 
 ### 20.传智播客_张孝祥_空中网挑选实习生的面试题3
 ```
-
+现有程序同时启动了4个线程去调用TestDo.doSome(key,value)方法，由于Test.doSome(key,value)
+方法内的代码是先暂停1秒，然后再输出以秒为单位的当前时间值，所以，会打印出4个相同的时间值，如下
+所示：
+4:4:1238199615
+1:1:1238199615
+3:3:1238199615
+1:2:1238199615
+请修改代码，如果有几个线程调用TestDo.doSome(key,value)方法时，
+传递进去的key相等（equals比较为true），
+则这几个线程应互斥排队输出结果，即当有两个线程的key都是“1”时，
+他们中的一个要比另外其他线程晚一秒输出结果，如下所示：
+4:4:1238199615
+1:1:1238199615
+3:3:1238199615
+1:2:1238199616
+总之，当每个线程中指定的key相等时，这些相等的key的线程应每隔一秒依次输出时间值（要用互斥），
+如果key不同，则并行执行（相互之间不互斥）。
 ```
+
+
+
+
+
+
+
+
+
+
+
+

@@ -43,8 +43,10 @@ public class SemaphoreMain {
                 }
             };
             executorService.execute(runnable);
+
         }
 
+        executorService.shutdown();
 
     }
 

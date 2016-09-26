@@ -16,7 +16,7 @@
         <module>SSMUnion</module>
         <module>CollectionProject</module>
         <module>JavaPage</module>
-        <module>MavenInstallProject</module>
+        <module>HiveProject</module>
         <module>JettyProject</module>
         <module>AnnocationProject</module>
         <module>CommonUtils</module>
