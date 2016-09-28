@@ -1,4 +1,4 @@
-package javanio.bufferdemo;
+package com.lgd.nio.bufferdemo;
 
 import java.nio.IntBuffer;
 

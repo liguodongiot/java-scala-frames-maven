@@ -8,6 +8,7 @@
     <artifactId>java-frames</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
     <modules>
         <module>MybatisProject</module>
         <module>SpringProject</module>
@@ -26,6 +27,17 @@
         <module>KafkaTask</module>
         <module>IOProject</module>
     </modules>
+
+    <properties>
+        <junit.version>4.10</junit.version>
+    </properties>
+
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+        <scope>test</scope>
+    </dependency>
 
 
 </project>

@@ -11,7 +11,7 @@ jetty-maven-plugin 有两种方式设置服务端口（默认：8080）：
     <version>6.1.22</version>
     <configuration>
         <connectors>
-            <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+            <connector implementation="org.mortbay.jetty.com.lgd.nio.SelectChannelConnector">
                 <port>10001</port>
             </connector>
         </connectors>
