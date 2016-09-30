@@ -12,7 +12,10 @@ public class StringFormatUtilsTests {
 
     @Test
     public void testStringToList(){
-        System.out.println(StringFormatUtils.stringToList(mulDealId,","));
+        //System.out.println(StringFormatUtils.strToList(mulDealId,","));
+
+        System.out.println(StringFormatUtils.intToStr(101));
+
     }
 
 }
