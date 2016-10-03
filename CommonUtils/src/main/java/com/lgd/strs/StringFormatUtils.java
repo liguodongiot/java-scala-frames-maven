@@ -56,13 +56,7 @@ public class StringFormatUtils {
     }
 
 
-    public static void main(String[] args) throws UnsupportedEncodingException {
-        System.out.println(URLDecoder.decode(URLDecoder.decode("%2525E7%2525BA%2525BF%2525E4%2525B8%25258B","utf-8"),"utf-8"));
 
-        System.out.println(URLDecoder.decode("%25E7%25BA%25BF%25E4%25B8%258B","utf-8"));
-
-
-    }
 
 
 
