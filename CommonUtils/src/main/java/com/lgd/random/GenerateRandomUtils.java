@@ -1,6 +1,9 @@
 package com.lgd.random;
 
-import org.jetbrains.annotations.NotNull;
+import com.lgd.datatype.ObjectFormatUtils;
+import org.joda.time.DateTime;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,25 +14,27 @@ import java.util.Random;
  */
 public class GenerateRandomUtils {
 
+    private final static Logger LOGGER =
+            LoggerFactory.getLogger(GenerateRandomUtils.class);
+
+    private final static String baseCharInt = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    private final static String baseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
     /**
      * 生成随机长度的字符和数字
+     *
      * @param length
      * @return
      */
-
-    public static String generateRandomStrInt(int length) { //length表示生成字符串的长度
-
-        String base = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
+    public String generateRandomStrInt(Integer length) { //length表示生成字符串的长度
         Random random = new Random();
 
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < length; i++) {
-            int number = random.nextInt(base.length());
-            sb.append(base.charAt(number));
+            int number = random.nextInt(baseCharInt.length());
+            sb.append(baseCharInt.charAt(number));
         }
-        return sb.toString();
+        return "\'".concat(sb.toString()).concat("\'");
     }
 
     /**
@@ -38,17 +43,13 @@ public class GenerateRandomUtils {
      * @param length
      * @return
      */
-
-    public static String generateRandomStr(int length) { //length表示生成字符串的长度
-
-        String base = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-
+    public static String generateRandomStr(Integer length) { //length表示生成字符串的长度
         Random random = new Random();
 
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < length; i++) {
-            int number = random.nextInt(base.length());
-            sb.append(base.charAt(number));
+            int number = random.nextInt(baseChar.length());
+            sb.append(baseChar.charAt(number));
         }
         return sb.toString();
     }
@@ -60,12 +61,10 @@ public class GenerateRandomUtils {
      * @param range
      * @return
      */
-    public static int generateRandomInt(int range){
+    public int generateRandomInt(Integer range){
         Random random = new Random();
-
         return random.nextInt(range);
     }
-
 
     /**
      * 取某个范围的任意整数
@@ -74,30 +73,73 @@ public class GenerateRandomUtils {
      * @param max
      * @return
      */
-    public static int generateRandomRangeInt(int min, int max)
-    {
+    public static int generateRandomRangeInt(Integer min, Integer max) {
         Random random = new Random();
         int s = random.nextInt(max) % (max - min + 1) + min;
         return s;
-
     }
 
+    /**
+     * 随机double类型数据
+     *
+     * @param range
+     * @return
+     */
+    public static Double generateRandomDouble(Integer range){
+        Double dRange = range.doubleValue();
+        return generateRandomRangeDouble(0D,dRange);
+    }
 
-
-    public static Double generateRandomDouble(int range)
-    {
+    /**
+     * 随机范围double类型数据
+     *
+     * @param min
+     * @param max
+     * @return
+     */
+    public static Double generateRandomRangeDouble(Double min, Double max) {
         Random random = new Random();
-
-        return random.nextDouble()*range;
+        return min + ((max - min) * random.nextDouble());
     }
 
+    /**
+     * 随机float类型数据
+     *
+     * @param range
+     * @return
+     */
+    public static Float generateRandomFloat(Float range) {
+        return generateRandomRangeFloat(0F,range);
+    }
 
-    public static Float generateRandomFloat(int range)
-    {
+    /**
+     * 随机范围float类型数据
+     *
+     * @param min
+     * @param max
+     * @return
+     */
+    public static Float generateRandomRangeFloat(Float min,Float max) {
         Random random = new Random();
-
-        return random.nextFloat()*range;
+        return min + ((max - min) * random.nextFloat());
     }
+
+    /**
+     * 随机时间类型数据
+     *
+     * @param range
+     * @return
+     */
+    public static String generateRandomDate(Integer range) {
+        DateTime dateTime = DateTime.now();
+        Random random = new Random();
+        int day = random.nextInt(range);
+        LOGGER.info("day:"+day);
+        String dateString = dateTime.minusDays(day).toString("yyyy-MM-dd");
+
+        return "\'".concat(dateString).concat("\'");
+    }
+
 
 
     /**
@@ -141,12 +183,12 @@ public class GenerateRandomUtils {
 
     public static void main(String[] args) {
 
-        System.out.println(generateRandomStrInt(10));
+        //System.out.println(generateRandomStrInt(10));
         System.out.println(generateRandomStr(10));
-        System.out.println(generateRandomInt(50));
+        //System.out.println(generateRandomInt(50));
         System.out.println(generateRandomRangeInt(100, 200));
-        System.out.println(generateRandomDouble(50));
-        System.out.println(generateRandomFloat(50));
+        //System.out.println(generateRandomDouble(50));
+        //System.out.println(generateRandomFloat(50));
 
 
 

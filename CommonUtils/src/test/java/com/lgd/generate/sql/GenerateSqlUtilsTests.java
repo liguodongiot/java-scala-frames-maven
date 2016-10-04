@@ -1,6 +1,5 @@
 package com.lgd.generate.sql;
 
-import com.lgd.strs.StringFormatUtils;
 import org.junit.Test;
 
 /**
@@ -13,40 +12,42 @@ public class GenerateSqlUtilsTests {
 //    String[] colValue={"'liguodong'","15"};
 
     //generateInsertStatement(tableName, colName, colValue);
-    String tableName="score_store_stat_all";
-    String colNameString = "stat_date,\n" +
-            "visit_uv,\n" +
-            "sign_uv,\n" +
-            "sign_div_visit,\n" +
-            "sign_score_mall_uv,\n" +
-            "score_mall_div_sign,\n" +
-            "new_uv_score,\n" +
-            "new_percent_score,\n" +
-            "new_morrow_retention_uv_score,\n" +
-            "new_morrow_retention_rate_score,\n" +
-            "morrow_retention_uv,\n" +
-            "morrow_retention_rate,\n" +
-            "seven_retention_uv,\n" +
-            "seven_retention_rate,\n" +
-            "center_uv,\n" +
-            "center_score_uv,\n" +
-            "center_socre_div_center,\n" +
-            "new_uv_sign,\n" +
-            "new_percent_sign,\n" +
-            "new_morrow_uv_sign,\n" +
-            "new_morrow_rate_sign\n";
+    String tableName="emp";
+    String colNameString = "enpname,\t\n" +
+            "salary, \t\t\n" +
+            "birthday,\t\n" +
+            "age, \t\t\n" +
+            "deptId";
+
+    String colValueType = "varchar,\n" +
+            "double, \n" +
+            "date, \n" +
+            "int,\n" +
+            "int";
+    String colValueString = "";
 
     //String[] colName={"name","age"};
 
     //String[] colValue={"'liguodong'","15"};
-    String colValueString = "";
+
 
 
 
     @Test
     public void test(){
 
-        String[] colName = StringFormatUtils.strToArr(colNameString,",");
+        String[] insertString = new String[10];
+
+        for (int i = 0; i < insertString.length; i++) {
+            String temp = GenerateSqlUtils.execute(tableName,colNameString,colValueType);
+            insertString[i] = temp;
+        }
+
+        for (String temp : insertString) {
+            System.out.println(temp);
+        }
+
+
         //GenerateSqlUtils.generateInsertStatement(tableName, colName, colNameString);
     }
 

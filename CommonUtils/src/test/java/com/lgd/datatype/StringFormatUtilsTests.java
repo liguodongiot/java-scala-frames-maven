@@ -1,4 +1,4 @@
-package com.lgd.strs;
+package com.lgd.datatype;
 
 import org.junit.Test;
 

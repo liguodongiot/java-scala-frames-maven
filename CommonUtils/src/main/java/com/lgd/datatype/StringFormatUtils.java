@@ -1,11 +1,9 @@
-package com.lgd.strs;
+package com.lgd.datatype;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.text.DateFormat;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by liguodong on 2016/9/21.
@@ -52,7 +50,10 @@ public class StringFormatUtils {
 
     //字符串转数组
     public static String[] strToArr(String str,String separator){
-        return str.split(separator);
+        Pattern p = Pattern.compile("\\s*|\t|\r|\n");
+        Matcher m = p.matcher(str);
+        String result = m.replaceAll("");
+        return result.split(separator);
     }
 
 
