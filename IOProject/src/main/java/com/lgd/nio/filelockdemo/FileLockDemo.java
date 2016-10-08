@@ -1,4 +1,4 @@
-package javanio.filelockdemo;
+package com.lgd.nio.filelockdemo;
 
 /**
  * 文件锁：当一个线程将文件锁定之后，其他线程是无法操作此文件的。
