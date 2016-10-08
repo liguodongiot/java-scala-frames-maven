@@ -17,7 +17,17 @@ public class EnDecoderUtilsTests {
 
         String res = EnDecoderUtils.varEncode("线下","utf-8","iso-8859-1");
         EnDecoderUtils.varDecode(res,"iso-8859-1","utf-8");
+
+
     }
+
+    @Test
+    public void testEnDecoder(){
+        String result = EnDecoderUtils.varDecode("%25E8%25A1%25A3%25E7%25BA%25AF","utf-8","utf-8");
+
+        System.out.println(result);
+    }
+
 
 
 }

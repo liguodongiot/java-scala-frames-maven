@@ -12,18 +12,16 @@ public class GenerateSqlUtilsTests {
 //    String[] colValue={"'liguodong'","15"};
 
     //generateInsertStatement(tableName, colName, colValue);
-    String tableName="emp";
-    String colNameString = "enpname,\t\n" +
-            "salary, \t\t\n" +
-            "birthday,\t\n" +
-            "age, \t\t\n" +
-            "deptId";
+    String tableName="student_info";
+    String colNameString = "stu_name,\n" +
+            "stu_age,\n" +
+            "stu_score,\n" +
+            "stu_date";
 
     String colValueType = "varchar,\n" +
-            "double, \n" +
-            "date, \n" +
             "int,\n" +
-            "int";
+            "double,\n" +
+            "date";
     String colValueString = "";
 
     //String[] colName={"name","age"};
@@ -49,6 +47,15 @@ public class GenerateSqlUtilsTests {
 
 
         //GenerateSqlUtils.generateInsertStatement(tableName, colName, colNameString);
+    }
+
+
+    @Test
+    public void testBatchInsert(){
+
+        String result = GenerateSqlUtils.executeBatchInsert(tableName,colNameString,colValueType,1000);
+
+        System.out.println("result : "+result);
     }
 
 
