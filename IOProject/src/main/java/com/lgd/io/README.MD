@@ -28,3 +28,16 @@ System.in, System.out, System.error(注：Java标准输入、输出、错误输�
 **Demo01**
 
 ### 相对路径与绝对路径
+
+
+文件：
+**com.lgd.io.file**
+
+字符流与字节流
+****
+
+
+****
+
+
+****
