@@ -19,11 +19,33 @@
 4、实现：接口与实现类关系
 ```
 
-****
+**design.pattern.relation**
+
+#### 单例设计模式
+**design.pattern.singleton**
+
+
 
 #### 装饰设计模式
 **design.pattern.decorator**
+```
+饿汉式
+HungryManSingleton
+懒汉式
+LazyManSingleton
+静态内部类式
+StaticInnerSingleton
+反射破解单例
+ReflectCrackSingleton
+反序列化破解单例
+SerializableCrackSingleton
+防止反射破解单例
+SloveReflectSingleton
+防止反序列化破解单例
+SloveSerializableSingleton
 
+注：反射和反序列化不能破解枚举创建的单例。
+```
 
 ****
 
