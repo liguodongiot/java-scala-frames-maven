@@ -3,7 +3,7 @@
 ## Fork/Join框架
 
 
-
+### 2.创建Fork/Join线程池
 
 Fork/Join框架的核心是由以下两个类：
 ```
@@ -14,7 +14,7 @@ ForkJoinTask： 它是将在ForkJoinPool中执行的任务的基类。它提供�
 ```
 
 
-### （三）加入任务的结果
+### 3.加入任务的结果
 
 
 Fork/Join框架提供了执行返回一个结果的任务的能力。这些任务的类型是实现了RecursiveTask类。
@@ -34,3 +34,4 @@ If (problem size < size){
 ```
 
 
+### 4.异步运行任务
