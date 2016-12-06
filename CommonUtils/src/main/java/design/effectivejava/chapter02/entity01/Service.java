@@ -1,4 +1,4 @@
-package design.effectivejava.entity01;
+package design.effectivejava.chapter02.entity01;
 
 /**
  * Created by liguodong on 2016/11/28.

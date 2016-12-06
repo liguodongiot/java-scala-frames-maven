@@ -1,4 +1,4 @@
-package design.effectivejava.entity02;
+package design.effectivejava.chapter02.entity02;
 
 
 import com.sun.istack.internal.Builder;

@@ -1,4 +1,4 @@
-package design.effectivejava.entity02;
+package design.effectivejava.chapter02.entity02;
 
 /**
  * 注：NutritionFacts是不可变的

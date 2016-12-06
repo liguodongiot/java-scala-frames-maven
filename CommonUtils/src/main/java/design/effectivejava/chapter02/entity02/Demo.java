@@ -1,6 +1,4 @@
-package design.effectivejava.entity02;
-
-import javafx.util.Builder;
+package design.effectivejava.chapter02.entity02;
 
 /**
  * Created by liguodong on 2016/12/2.

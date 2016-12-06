@@ -1,4 +1,4 @@
-package design.effectivejava.entity01;
+package design.effectivejava.chapter02.entity01;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
