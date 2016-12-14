@@ -15,6 +15,16 @@
     <artifactId>MultiThreadProject</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-actor_2.11</artifactId>
+            <!--<version>2.3.6</version>-->
+            <version> 2.4.11</version>
+
+        </dependency>
+    </dependencies>
+
     <!--<dependencies>
         <dependency>
             <groupId>com.google.code.findbugs</groupId>

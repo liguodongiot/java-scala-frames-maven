@@ -12,10 +12,17 @@
     <groupId>com.lgd.frames.common</groupId>
     <artifactId>CommonUtils</artifactId>
     <dependencies>
+
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations-java5</artifactId>
             <version>RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libthrift</artifactId>
+            <version>0.9.3</version>
         </dependency>
 
     </dependencies>
