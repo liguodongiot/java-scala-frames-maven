@@ -21,4 +21,9 @@
 
 **9.覆盖equals时总要覆盖hashCode**
 
-****
+**10.始终要覆盖toString**
+
+**11.谨慎地覆盖clone**
+
+**12.考虑实现Comparable接口**
+
