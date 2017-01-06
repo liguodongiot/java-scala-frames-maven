@@ -29,6 +29,12 @@ public class ListDemo {
         listAll.addAll(list2);
         System.out.println(listAll.size());
         System.out.println(listAll.toString());
+
+
+        String channel = "dsssefdsfdsfsd";
+        if(channel.length()>5)
+            System.out.println(channel.substring(0,5));
+
     }
 
 }
