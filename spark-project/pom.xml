@@ -9,8 +9,9 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.lgd.frames.spark</groupId>
-    <artifactId>SparkProject</artifactId>
+    <artifactId>spark-project</artifactId>
     <inceptionYear>2008</inceptionYear>
 
     <properties>

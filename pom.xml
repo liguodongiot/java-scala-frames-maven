@@ -13,19 +13,19 @@
         <module>annocation-project</module>
         <module>collection-project</module>
         <module>concurrent-programming</module>
-        <module>MybatisProject</module>
-        <module>SpringProject</module>
-        <module>EncryptionAndDecryption</module>
-        <module>MavenProject</module>
-        <module>SSMUnion</module>
-        <module>JavaPage</module>
-        <module>HiveProject</module>
-        <module>JettyProject</module>
+        <module>mybatis-project</module>
+        <module>spring-project</module>
+        <module>en-decryption</module>
+        <module>maven-project</module>
+        <module>ssm-union</module>
+        <module>java-page</module>
+        <module>hive-project</module>
+        <module>jetty-project</module>
         <module>common-project</module>
-        <module>SparkProject</module>
-        <module>Java8Project</module>
-        <module>KafkaTask</module>
-        <module>IOProject</module>
+        <module>spark-project</module>
+        <module>java8-project</module>
+        <module>kafka-project</module>
+        <module>io-project</module>
     </modules>
 
 

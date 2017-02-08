@@ -7,12 +7,11 @@
         <groupId>com.lgd.frames</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
-    <!--groupId使用项目的包名-->
-    <groupId>com.lgd.maven</groupId>
-    <!--artifactId模块名，建议使用项目名-->
-    <artifactId>MavenProject</artifactId>
+    <groupId>com.lgd.frames.spring</groupId>
+    <artifactId>spring-project</artifactId>
     <version>1.0.0</version>
 
 </project>

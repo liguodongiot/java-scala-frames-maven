@@ -7,7 +7,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.lgd.frames.jetty</groupId>
-    <artifactId>JettyProject</artifactId>
+    <artifactId>jetty-project</artifactId>
     <packaging>war</packaging>
     <name>JettyProject Maven Webapp</name>
     <url>http://maven.apache.org</url>

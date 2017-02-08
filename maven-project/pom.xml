@@ -9,7 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>IOProject</artifactId>
-
+    <!--groupId使用项目的包名-->
+    <groupId>com.lgd.maven</groupId>
+    <!--artifactId模块名，建议使用项目名-->
+    <artifactId>maven-project</artifactId>
+    <version>1.0.0</version>
 
 </project>

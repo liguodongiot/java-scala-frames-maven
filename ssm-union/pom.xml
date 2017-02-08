@@ -5,11 +5,13 @@
         <groupId>com.lgd.frames</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.lgd.frames.ssm</groupId>
-    <artifactId>SSMUnion</artifactId>
+    <artifactId>ssm</artifactId>
     <packaging>war</packaging>
-    <name>SSMUnion</name>
+    <name>ssm</name>
     <url>http://maven.apache.org</url>
 
     <properties>

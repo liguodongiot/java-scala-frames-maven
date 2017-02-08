@@ -9,7 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.lgd.frames.page</groupId>
-    <artifactId>JavaPage</artifactId>
+    <artifactId>java-page</artifactId>
     <packaging>war</packaging>
     <name>JavaPage Maven Webapp</name>
     <url>http://maven.apache.org</url>
