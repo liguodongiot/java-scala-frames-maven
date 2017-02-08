@@ -12,7 +12,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.lgd.frames.thread</groupId>
-    <artifactId>MultiThreadProject</artifactId>
+    <artifactId>java-concurrent</artifactId>
 
 
     <dependencies>

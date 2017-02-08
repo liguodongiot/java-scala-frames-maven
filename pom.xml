@@ -10,18 +10,18 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
+        <module>annocation-project</module>
+        <module>collection-project</module>
+        <module>concurrent-programming</module>
         <module>MybatisProject</module>
         <module>SpringProject</module>
         <module>EncryptionAndDecryption</module>
         <module>MavenProject</module>
         <module>SSMUnion</module>
-        <module>CollectionProject</module>
         <module>JavaPage</module>
         <module>HiveProject</module>
         <module>JettyProject</module>
-        <module>AnnocationProject</module>
-        <module>CommonUtils</module>
-        <module>MultiThreadProject</module>
+        <module>common-project</module>
         <module>SparkProject</module>
         <module>Java8Project</module>
         <module>KafkaTask</module>

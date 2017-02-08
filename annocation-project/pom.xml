@@ -12,6 +12,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.lgd.frames.annocation</groupId>
-    <artifactId>JavaFrames-Annocation</artifactId>
+    <artifactId>java-annocation</artifactId>
 
 </project>
