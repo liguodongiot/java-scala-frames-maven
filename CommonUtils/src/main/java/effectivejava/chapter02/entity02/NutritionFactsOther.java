@@ -1,8 +1,10 @@
 package effectivejava.chapter02.entity02;
 
 
-import com.sun.istack.internal.Builder;
+//import com.sun.istack.internal.Builder;
 //import javafx.util.Builder;
+
+//import com.sun.istack.internal.Builder;
 
 /**
  * 注：NutritionFacts是不可变的
@@ -21,7 +23,8 @@ public class NutritionFactsOther {
     private int carbohydrate;
 
 
-    public static class BuilderImpl implements Builder<NutritionFactsOther> {
+    public static class BuilderImpl //implements Builder<NutritionFactsOther>
+    {
         //Require parameters
         private int servingSize;
         private int servings;
@@ -54,7 +57,7 @@ public class NutritionFactsOther {
             return this;
         }
 
-        @Override
+        //@Override
         public NutritionFactsOther build(){
             return new NutritionFactsOther(this);
         }
