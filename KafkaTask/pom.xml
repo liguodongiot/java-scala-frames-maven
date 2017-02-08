@@ -16,12 +16,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-
     <dependencies>
         <dependency>
             <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka_2.10</artifactId>
-            <version>0.8.2.2</version>
+            <artifactId>kafka_2.11</artifactId>
         </dependency>
 
         <!--<dependency>
@@ -34,8 +32,7 @@
 
     <build>
         <sourceDirectory>src/main/java</sourceDirectory>
-        <testSourceDirectory>src/test/java</testSourceDirectory>
-
+        <!--<testSourceDirectory>src/test/java</testSourceDirectory>-->
         <plugins>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>

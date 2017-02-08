@@ -9,28 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-
     <!--groupId使用项目的包名-->
     <groupId>com.lgd.maven</groupId>
     <!--artifactId模块名，建议使用项目名-->
     <artifactId>MavenProject</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-
-    <!--依赖-->
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.10</version>
-        </dependency>
-
-        <!--<dependency>
-            <groupId>com.lgd.frames.maven</groupId>
-            <artifactId>HiveProject</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>-->
-
-    </dependencies>
-
+    <version>1.0.0</version>
 
 </project>
