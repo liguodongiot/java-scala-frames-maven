@@ -111,6 +111,7 @@
         <commons-fileupload.version>1.3.1</commons-fileupload.version>
         <commons-io.version>2.4</commons-io.version>
         <fastjson.version>1.1.41</fastjson.version>
+        <finagle-thrift.version>6.41.0</finagle-thrift.version>
         <guava.version>19.0</guava.version>
         <hive.version>2.1.0</hive.version>
         <hadoop.version>2.6.0</hadoop.version>
@@ -128,6 +129,7 @@
         <mybatis-spring.version>1.2.2</mybatis-spring.version>
         <mybatis-generator.version>1.3.2</mybatis-generator.version>
         <mysql.version>5.1.39</mysql.version>
+        <scrooge.version>4.13.0</scrooge.version>
         <servlet-api.version>3.0.1</servlet-api.version>
         <slf4j.version>1.7.21</slf4j.version>
         <spring.hadoop.version>2.3.0.RELEASE-hadoop26</spring.hadoop.version>
@@ -199,6 +201,16 @@
                 <groupId>org.apache.thrift</groupId>
                 <artifactId>libthrift</artifactId>
                 <version>${thrift.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.twitter</groupId>
+                <artifactId>scrooge-core_2.11</artifactId>
+                <version>${scrooge.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.twitter</groupId>
+                <artifactId>finagle-thrift_2.11</artifactId>
+                <version>${finagle-thrift.version}</version>
             </dependency>
 
             <dependency>

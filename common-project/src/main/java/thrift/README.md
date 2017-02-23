@@ -108,3 +108,16 @@ tips:客户端和服务端的协议要一致
 
 `HelloAsynClientServerDemo`
 `HelloAsynClientDemo`
+
+
+
+
+### Scrooge Twitter 详细介绍
+Scrooge 是一个 Thrift 代码解析／生成器，能够生成 Scala 和 Java 代码。这就意味着，
+它能够取代 Apache Thrift 代码生成器，并能在 libthrift 上生成符合标准的可兼容的二进制编解码。
+建议使用Scala语法生成代码。
+
+因为 Scala 与 Java 的API 兼容，所以你能够使用 apache thrift 编解码生成器来生成 Java 文件，
+并在 Scala 中使用它们，但是使用 Java 集合和可变的"bean"类生成的代码可能会导致一些问题出现，
+这时候就必须手动修改了。但是，可以直接通过生成 Scala 代码来规避这个问题。
+所以说，使用Scala语法生成代码的兼容性更好。
