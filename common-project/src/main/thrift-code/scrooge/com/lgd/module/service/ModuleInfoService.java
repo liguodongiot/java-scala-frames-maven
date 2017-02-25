@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  */
-package thrift.lgd.hello;
+package com.lgd.module.service;
 
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import java.util.List;
@@ -35,17 +35,17 @@ import com.twitter.util.Return;
 import com.twitter.util.Throw;
 import com.twitter.finagle.thrift.ThriftClientRequest;
 
-public class HelloWorldService {
+public class ModuleInfoService {
   public interface Iface {
-    public String sayHello(String username) throws TException;
+    public Result queryModuleInfo(QueryInfo queryInfo) throws TException;
   }
 
   public interface AsyncIface {
-    public void sayHello(String username, AsyncMethodCallback<AsyncClient.sayHello_call> resultHandler) throws TException;
+    public void queryModuleInfo(QueryInfo queryInfo, AsyncMethodCallback<AsyncClient.queryModuleInfo_call> resultHandler) throws TException;
   }
 
   public interface ServiceIface {
-    public Future<String> sayHello(String username);
+    public Future<Result> queryModuleInfo(QueryInfo queryInfo);
   }
 
   public static class Client implements TServiceClient, Iface {
@@ -85,23 +85,23 @@ public class HelloWorldService {
       return this.oprot_;
     }
 
-    public String sayHello(String username) throws TException
+    public Result queryModuleInfo(QueryInfo queryInfo) throws TException
     {
-      send_sayHello(username);
-      return recv_sayHello();
+      send_queryModuleInfo(queryInfo);
+      return recv_queryModuleInfo();
     }
 
-    public void send_sayHello(String username) throws TException
+    public void send_queryModuleInfo(QueryInfo queryInfo) throws TException
     {
-      oprot_.writeMessageBegin(new TMessage("sayHello", TMessageType.CALL, ++seqid_));
-      sayHello_args args = new sayHello_args();
-      args.setUsername(username);
+      oprot_.writeMessageBegin(new TMessage("queryModuleInfo", TMessageType.CALL, ++seqid_));
+      queryModuleInfo_args args = new queryModuleInfo_args();
+      args.setQueryInfo(queryInfo);
       args.write(oprot_);
       oprot_.writeMessageEnd();
       oprot_.getTransport().flush();
     }
 
-    public String recv_sayHello() throws TException
+    public Result recv_queryModuleInfo() throws TException
     {
       TMessage msg = iprot_.readMessageBegin();
       if (msg.type == TMessageType.EXCEPTION) {
@@ -110,15 +110,15 @@ public class HelloWorldService {
         throw x;
       }
       if (msg.seqid != seqid_) {
-        throw new TApplicationException(TApplicationException.BAD_SEQUENCE_ID, "sayHello failed: out of sequence response");
+        throw new TApplicationException(TApplicationException.BAD_SEQUENCE_ID, "queryModuleInfo failed: out of sequence response");
       }
-      sayHello_result result = new sayHello_result();
+      queryModuleInfo_result result = new queryModuleInfo_result();
       result.read(iprot_);
       iprot_.readMessageEnd();
       if (result.isSetSuccess()) {
         return result.success;
       }
-      throw new TApplicationException(TApplicationException.MISSING_RESULT, "sayHello failed: unknown result");
+      throw new TApplicationException(TApplicationException.MISSING_RESULT, "queryModuleInfo failed: unknown result");
     }
   }
 
@@ -139,35 +139,35 @@ public class HelloWorldService {
       super(protocolFactory, clientManager, transport);
     }
 
-    public void sayHello(String username, AsyncMethodCallback<sayHello_call> resultHandler) throws TException {
+    public void queryModuleInfo(QueryInfo queryInfo, AsyncMethodCallback<queryModuleInfo_call> resultHandler) throws TException {
       checkReady();
-      sayHello_call method_call = new sayHello_call(username, resultHandler, this, protocolFactory, transport);
+      queryModuleInfo_call method_call = new queryModuleInfo_call(queryInfo, resultHandler, this, protocolFactory, transport);
       manager.call(method_call);
     }
 
-    public static class sayHello_call extends TAsyncMethodCall {
-      private String username;
+    public static class queryModuleInfo_call extends TAsyncMethodCall {
+      private QueryInfo queryInfo;
 
-      public sayHello_call(String username, AsyncMethodCallback<sayHello_call> resultHandler, TAsyncClient client, TProtocolFactory protocolFactory, TNonblockingTransport transport) throws TException {
+      public queryModuleInfo_call(QueryInfo queryInfo, AsyncMethodCallback<queryModuleInfo_call> resultHandler, TAsyncClient client, TProtocolFactory protocolFactory, TNonblockingTransport transport) throws TException {
         super(client, protocolFactory, transport, resultHandler, false);
-        this.username = username;
+        this.queryInfo = queryInfo;
       }
 
       public void write_args(TProtocol prot) throws TException {
-        prot.writeMessageBegin(new TMessage("sayHello", TMessageType.CALL, 0));
-        sayHello_args args = new sayHello_args();
-        args.setUsername(username);
+        prot.writeMessageBegin(new TMessage("queryModuleInfo", TMessageType.CALL, 0));
+        queryModuleInfo_args args = new queryModuleInfo_args();
+        args.setQueryInfo(queryInfo);
         args.write(prot);
         prot.writeMessageEnd();
       }
 
-      public String getResult() throws TException {
+      public Result getResult() throws TException {
         if (getState() != State.RESPONSE_READ) {
           throw new IllegalStateException("Method call not finished!");
         }
         TMemoryInputTransport memoryTransport = new TMemoryInputTransport(getFrameBuffer().array());
         TProtocol prot = client.getProtocolFactory().getProtocol(memoryTransport);
-        return (new Client(prot)).recv_sayHello();
+        return (new Client(prot)).recv_queryModuleInfo();
       }
      }
    }
@@ -182,14 +182,14 @@ public class HelloWorldService {
       this.protocolFactory = protocolFactory;
     }
 
-    public Future<String> sayHello(String username) {
+    public Future<Result> queryModuleInfo(QueryInfo queryInfo) {
       try {
         // TODO: size
         TMemoryBuffer __memoryTransport__ = new TMemoryBuffer(512);
         TProtocol __prot__ = this.protocolFactory.getProtocol(__memoryTransport__);
-        __prot__.writeMessageBegin(new TMessage("sayHello", TMessageType.CALL, 0));
-        sayHello_args __args__ = new sayHello_args();
-        __args__.setUsername(username);
+        __prot__.writeMessageBegin(new TMessage("queryModuleInfo", TMessageType.CALL, 0));
+        queryModuleInfo_args __args__ = new queryModuleInfo_args();
+        __args__.setQueryInfo(queryInfo);
         __args__.write(__prot__);
         __prot__.writeMessageEnd();
 
@@ -197,12 +197,12 @@ public class HelloWorldService {
         byte[] __buffer__ = Arrays.copyOfRange(__memoryTransport__.getArray(), 0, __memoryTransport__.length());
         ThriftClientRequest __request__ = new ThriftClientRequest(__buffer__, false);
         Future<byte[]> __done__ = this.service.apply(__request__);
-        return __done__.flatMap(new Function<byte[], Future<String>>() {
-          public Future<String> apply(byte[] __buffer__) {
+        return __done__.flatMap(new Function<byte[], Future<Result>>() {
+          public Future<Result> apply(byte[] __buffer__) {
             TMemoryInputTransport __memoryTransport__ = new TMemoryInputTransport(__buffer__);
             TProtocol __prot__ = ServiceToClient.this.protocolFactory.getProtocol(__memoryTransport__);
             try {
-              return Future.value((new Client(__prot__)).recv_sayHello());
+              return Future.value((new Client(__prot__)).recv_queryModuleInfo());
             } catch (Exception e) {
               return Future.exception(e);
             }
@@ -219,7 +219,7 @@ public class HelloWorldService {
     public Processor(Iface iface)
     {
       iface_ = iface;
-      processMap_.put("sayHello", new sayHello());
+      processMap_.put("queryModuleInfo", new queryModuleInfo());
     }
 
     protected static interface ProcessFunction {
@@ -247,26 +247,26 @@ public class HelloWorldService {
       return true;
     }
 
-    private class sayHello implements ProcessFunction {
+    private class queryModuleInfo implements ProcessFunction {
       public void process(int seqid, TProtocol iprot, TProtocol oprot) throws TException
       {
-        sayHello_args args = new sayHello_args();
+        queryModuleInfo_args args = new queryModuleInfo_args();
         try {
           args.read(iprot);
         } catch (TProtocolException e) {
           iprot.readMessageEnd();
           TApplicationException x = new TApplicationException(TApplicationException.PROTOCOL_ERROR, e.getMessage());
-          oprot.writeMessageBegin(new TMessage("sayHello", TMessageType.EXCEPTION, seqid));
+          oprot.writeMessageBegin(new TMessage("queryModuleInfo", TMessageType.EXCEPTION, seqid));
           x.write(oprot);
           oprot.writeMessageEnd();
           oprot.getTransport().flush();
           return;
         }
         iprot.readMessageEnd();
-        sayHello_result result = new sayHello_result();
-        result.success = iface_.sayHello(args.username);
+        queryModuleInfo_result result = new queryModuleInfo_result();
+        result.success = iface_.queryModuleInfo(args.queryInfo);
         
-        oprot.writeMessageBegin(new TMessage("sayHello", TMessageType.REPLY, seqid));
+        oprot.writeMessageBegin(new TMessage("queryModuleInfo", TMessageType.REPLY, seqid));
         result.write(oprot);
         oprot.writeMessageEnd();
         oprot.getTransport().flush();
@@ -281,9 +281,9 @@ public class HelloWorldService {
     public Service(final ServiceIface iface, final TProtocolFactory protocolFactory) {
       this.iface = iface;
       this.protocolFactory = protocolFactory;
-      functionMap.put("sayHello", new Function2<TProtocol, Integer, Future<byte[]>>() {
+      functionMap.put("queryModuleInfo", new Function2<TProtocol, Integer, Future<byte[]>>() {
         public Future<byte[]> apply(final TProtocol iprot, final Integer seqid) {
-          sayHello_args args = new sayHello_args();
+          queryModuleInfo_args args = new queryModuleInfo_args();
           try {
             args.read(iprot);
           } catch (TProtocolException e) {
@@ -293,7 +293,7 @@ public class HelloWorldService {
               TMemoryBuffer memoryBuffer = new TMemoryBuffer(512);
               TProtocol oprot = protocolFactory.getProtocol(memoryBuffer);
 
-              oprot.writeMessageBegin(new TMessage("sayHello", TMessageType.EXCEPTION, seqid));
+              oprot.writeMessageBegin(new TMessage("queryModuleInfo", TMessageType.EXCEPTION, seqid));
               x.write(oprot);
               oprot.writeMessageEnd();
               oprot.getTransport().flush();
@@ -311,17 +311,17 @@ public class HelloWorldService {
           } catch (Exception e) {
             return Future.exception(e);
           }
-          Future<String> future;
+          Future<Result> future;
           try {
-            future = iface.sayHello(args.username);
+            future = iface.queryModuleInfo(args.queryInfo);
           } catch (Exception e) {
             future = Future.exception(e);
           }
 
           try {
-            return future.flatMap(new Function<String, Future<byte[]>>() {
-              public Future<byte[]> apply(String value) {
-                sayHello_result result = new sayHello_result();
+            return future.flatMap(new Function<Result, Future<byte[]>>() {
+              public Future<byte[]> apply(Result value) {
+                queryModuleInfo_result result = new queryModuleInfo_result();
                 result.success = value;
                 result.setSuccessIsSet(true);
 
@@ -329,7 +329,7 @@ public class HelloWorldService {
                   TMemoryBuffer memoryBuffer = new TMemoryBuffer(512);
                   TProtocol oprot = protocolFactory.getProtocol(memoryBuffer);
 
-                  oprot.writeMessageBegin(new TMessage("sayHello", TMessageType.REPLY, seqid));
+                  oprot.writeMessageBegin(new TMessage("queryModuleInfo", TMessageType.REPLY, seqid));
                   result.write(oprot);
                   oprot.writeMessageEnd();
 
@@ -383,17 +383,17 @@ public class HelloWorldService {
     }
   }
 
-  public static class sayHello_args implements TBase<sayHello_args, sayHello_args._Fields>, java.io.Serializable, Cloneable {
-  private static final TStruct STRUCT_DESC = new TStruct("sayHello_args");
+  public static class queryModuleInfo_args implements TBase<queryModuleInfo_args, queryModuleInfo_args._Fields>, java.io.Serializable, Cloneable {
+  private static final TStruct STRUCT_DESC = new TStruct("queryModuleInfo_args");
 
-  private static final TField USERNAME_FIELD_DESC = new TField("username", TType.STRING, (short)1);
+  private static final TField QUERY_INFO_FIELD_DESC = new TField("queryInfo", TType.STRUCT, (short)1);
 
 
-  public String username;
+  public QueryInfo queryInfo;
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements TFieldIdEnum {
-    USERNAME((short)1, "username");
+    QUERY_INFO((short)1, "queryInfo");
   
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
   
@@ -408,8 +408,8 @@ public class HelloWorldService {
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // USERNAME
-  	return USERNAME;
+        case 1: // QUERY_INFO
+  	return QUERY_INFO;
         default:
   	return null;
       }
@@ -455,73 +455,73 @@ public class HelloWorldService {
   public static final Map<_Fields, FieldMetaData> metaDataMap;
   static {
     Map<_Fields, FieldMetaData> tmpMap = new EnumMap<_Fields, FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.USERNAME, new FieldMetaData("username", TFieldRequirementType.DEFAULT,
-      new FieldValueMetaData(TType.STRING)));
+    tmpMap.put(_Fields.QUERY_INFO, new FieldMetaData("queryInfo", TFieldRequirementType.DEFAULT,
+      new StructMetaData(TType.STRUCT, QueryInfo.class)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    FieldMetaData.addStructMetaDataMap(sayHello_args.class, metaDataMap);
+    FieldMetaData.addStructMetaDataMap(queryModuleInfo_args.class, metaDataMap);
   }
 
 
-  public sayHello_args() {
+  public queryModuleInfo_args() {
   }
 
-  public sayHello_args(
-    String username)
+  public queryModuleInfo_args(
+    QueryInfo queryInfo)
   {
     this();
-    this.username = username;
+    this.queryInfo = queryInfo;
   }
 
   /**
    * Performs a deep copy on <i>other</i>.
    */
-  public sayHello_args(sayHello_args other) {
-    if (other.isSetUsername()) {
-      this.username = other.username;
+  public queryModuleInfo_args(queryModuleInfo_args other) {
+    if (other.isSetQueryInfo()) {
+      this.queryInfo = new QueryInfo(other.queryInfo);
     }
   }
 
-  public sayHello_args deepCopy() {
-    return new sayHello_args(this);
+  public queryModuleInfo_args deepCopy() {
+    return new queryModuleInfo_args(this);
   }
 
   @Override
   public void clear() {
-    this.username = null;
+    this.queryInfo = null;
   }
 
-  public String getUsername() {
-    return this.username;
+  public QueryInfo getQueryInfo() {
+    return this.queryInfo;
   }
 
-  public sayHello_args setUsername(String username) {
-    this.username = username;
+  public queryModuleInfo_args setQueryInfo(QueryInfo queryInfo) {
+    this.queryInfo = queryInfo;
     
     return this;
   }
 
-  public void unsetUsername() {
-    this.username = null;
+  public void unsetQueryInfo() {
+    this.queryInfo = null;
   }
 
-  /** Returns true if field username is set (has been asigned a value) and false otherwise */
-  public boolean isSetUsername() {
-    return this.username != null;
+  /** Returns true if field queryInfo is set (has been asigned a value) and false otherwise */
+  public boolean isSetQueryInfo() {
+    return this.queryInfo != null;
   }
 
-  public void setUsernameIsSet(boolean value) {
+  public void setQueryInfoIsSet(boolean value) {
     if (!value) {
-      this.username = null;
+      this.queryInfo = null;
     }
   }
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case USERNAME:
+    case QUERY_INFO:
       if (value == null) {
-        unsetUsername();
+        unsetQueryInfo();
       } else {
-        setUsername((String)value);
+        setQueryInfo((QueryInfo)value);
       }
       break;
     }
@@ -529,8 +529,8 @@ public class HelloWorldService {
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case USERNAME:
-      return getUsername();
+    case QUERY_INFO:
+      return getQueryInfo();
     }
     throw new IllegalStateException();
   }
@@ -542,8 +542,8 @@ public class HelloWorldService {
     }
 
     switch (field) {
-    case USERNAME:
-      return isSetUsername();
+    case QUERY_INFO:
+      return isSetQueryInfo();
     }
     throw new IllegalStateException();
   }
@@ -552,20 +552,20 @@ public class HelloWorldService {
   public boolean equals(Object that) {
     if (that == null)
       return false;
-    if (that instanceof sayHello_args)
-      return this.equals((sayHello_args)that);
+    if (that instanceof queryModuleInfo_args)
+      return this.equals((queryModuleInfo_args)that);
     return false;
   }
 
-  public boolean equals(sayHello_args that) {
+  public boolean equals(queryModuleInfo_args that) {
     if (that == null)
       return false;
-    boolean this_present_username = true && this.isSetUsername();
-    boolean that_present_username = true && that.isSetUsername();
-    if (this_present_username || that_present_username) {
-      if (!(this_present_username && that_present_username))
+    boolean this_present_queryInfo = true && this.isSetQueryInfo();
+    boolean that_present_queryInfo = true && that.isSetQueryInfo();
+    if (this_present_queryInfo || that_present_queryInfo) {
+      if (!(this_present_queryInfo && that_present_queryInfo))
         return false;
-      if (!this.username.equals(that.username))
+      if (!this.queryInfo.equals(that.queryInfo))
         return false;
     }
 
@@ -575,27 +575,27 @@ public class HelloWorldService {
   @Override
   public int hashCode() {
     HashCodeBuilder builder = new HashCodeBuilder();
-    boolean present_username = true && (isSetUsername());
-    builder.append(present_username);
-    if (present_username)
-      builder.append(username);
+    boolean present_queryInfo = true && (isSetQueryInfo());
+    builder.append(present_queryInfo);
+    if (present_queryInfo)
+      builder.append(queryInfo);
     return builder.toHashCode();
   }
 
-  public int compareTo(sayHello_args other) {
+  public int compareTo(queryModuleInfo_args other) {
     if (!getClass().equals(other.getClass())) {
       return getClass().getName().compareTo(other.getClass().getName());
     }
 
     int lastComparison = 0;
-    sayHello_args typedOther = (sayHello_args)other;
+    queryModuleInfo_args typedOther = (queryModuleInfo_args)other;
 
-    lastComparison = Boolean.valueOf(isSetUsername()).compareTo(typedOther.isSetUsername());
+    lastComparison = Boolean.valueOf(isSetQueryInfo()).compareTo(typedOther.isSetQueryInfo());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetUsername()) {
-      lastComparison = TBaseHelper.compareTo(this.username, typedOther.username);
+    if (isSetQueryInfo()) {
+      lastComparison = TBaseHelper.compareTo(this.queryInfo, typedOther.queryInfo);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -618,9 +618,10 @@ public class HelloWorldService {
         break;
       }
       switch (field.id) {
-        case 1: // USERNAME
-          if (field.type == TType.STRING) {
-            this.username = iprot.readString();
+        case 1: // QUERY_INFO
+          if (field.type == TType.STRUCT) {
+            this.queryInfo = new QueryInfo();
+            this.queryInfo.read(iprot);
           } else {
             TProtocolUtil.skip(iprot, field.type);
           }
@@ -640,9 +641,9 @@ public class HelloWorldService {
     validate();
     
     oprot.writeStructBegin(STRUCT_DESC);
-    if (this.username != null) {
-      oprot.writeFieldBegin(USERNAME_FIELD_DESC);
-      oprot.writeString(this.username);
+    if (this.queryInfo != null) {
+      oprot.writeFieldBegin(QUERY_INFO_FIELD_DESC);
+      this.queryInfo.write(oprot);
       oprot.writeFieldEnd();
     }
     oprot.writeFieldStop();
@@ -651,13 +652,13 @@ public class HelloWorldService {
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("sayHello_args(");
+    StringBuilder sb = new StringBuilder("queryModuleInfo_args(");
     boolean first = true;
-    sb.append("username:");
-    if (this.username == null) {
+    sb.append("queryInfo:");
+    if (this.queryInfo == null) {
       sb.append("null");
     } else {
-      sb.append(this.username);
+      sb.append(this.queryInfo);
     }
     first = false;
     sb.append(")");
@@ -669,13 +670,13 @@ public class HelloWorldService {
   }
 }
 
-  public static class sayHello_result implements TBase<sayHello_result, sayHello_result._Fields>, java.io.Serializable, Cloneable {
-  private static final TStruct STRUCT_DESC = new TStruct("sayHello_result");
+  public static class queryModuleInfo_result implements TBase<queryModuleInfo_result, queryModuleInfo_result._Fields>, java.io.Serializable, Cloneable {
+  private static final TStruct STRUCT_DESC = new TStruct("queryModuleInfo_result");
 
-  private static final TField SUCCESS_FIELD_DESC = new TField("success", TType.STRING, (short)0);
+  private static final TField SUCCESS_FIELD_DESC = new TField("success", TType.STRUCT, (short)0);
 
 
-  public String success;
+  public Result success;
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements TFieldIdEnum {
@@ -742,17 +743,17 @@ public class HelloWorldService {
   static {
     Map<_Fields, FieldMetaData> tmpMap = new EnumMap<_Fields, FieldMetaData>(_Fields.class);
     tmpMap.put(_Fields.SUCCESS, new FieldMetaData("success", TFieldRequirementType.DEFAULT,
-      new FieldValueMetaData(TType.STRING)));
+      new StructMetaData(TType.STRUCT, Result.class)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    FieldMetaData.addStructMetaDataMap(sayHello_result.class, metaDataMap);
+    FieldMetaData.addStructMetaDataMap(queryModuleInfo_result.class, metaDataMap);
   }
 
 
-  public sayHello_result() {
+  public queryModuleInfo_result() {
   }
 
-  public sayHello_result(
-    String success)
+  public queryModuleInfo_result(
+    Result success)
   {
     this();
     this.success = success;
@@ -761,14 +762,14 @@ public class HelloWorldService {
   /**
    * Performs a deep copy on <i>other</i>.
    */
-  public sayHello_result(sayHello_result other) {
+  public queryModuleInfo_result(queryModuleInfo_result other) {
     if (other.isSetSuccess()) {
-      this.success = other.success;
+      this.success = new Result(other.success);
     }
   }
 
-  public sayHello_result deepCopy() {
-    return new sayHello_result(this);
+  public queryModuleInfo_result deepCopy() {
+    return new queryModuleInfo_result(this);
   }
 
   @Override
@@ -776,11 +777,11 @@ public class HelloWorldService {
     this.success = null;
   }
 
-  public String getSuccess() {
+  public Result getSuccess() {
     return this.success;
   }
 
-  public sayHello_result setSuccess(String success) {
+  public queryModuleInfo_result setSuccess(Result success) {
     this.success = success;
     
     return this;
@@ -807,7 +808,7 @@ public class HelloWorldService {
       if (value == null) {
         unsetSuccess();
       } else {
-        setSuccess((String)value);
+        setSuccess((Result)value);
       }
       break;
     }
@@ -838,12 +839,12 @@ public class HelloWorldService {
   public boolean equals(Object that) {
     if (that == null)
       return false;
-    if (that instanceof sayHello_result)
-      return this.equals((sayHello_result)that);
+    if (that instanceof queryModuleInfo_result)
+      return this.equals((queryModuleInfo_result)that);
     return false;
   }
 
-  public boolean equals(sayHello_result that) {
+  public boolean equals(queryModuleInfo_result that) {
     if (that == null)
       return false;
     boolean this_present_success = true && this.isSetSuccess();
@@ -868,13 +869,13 @@ public class HelloWorldService {
     return builder.toHashCode();
   }
 
-  public int compareTo(sayHello_result other) {
+  public int compareTo(queryModuleInfo_result other) {
     if (!getClass().equals(other.getClass())) {
       return getClass().getName().compareTo(other.getClass().getName());
     }
 
     int lastComparison = 0;
-    sayHello_result typedOther = (sayHello_result)other;
+    queryModuleInfo_result typedOther = (queryModuleInfo_result)other;
 
     lastComparison = Boolean.valueOf(isSetSuccess()).compareTo(typedOther.isSetSuccess());
     if (lastComparison != 0) {
@@ -905,8 +906,9 @@ public class HelloWorldService {
       }
       switch (field.id) {
         case 0: // SUCCESS
-          if (field.type == TType.STRING) {
-            this.success = iprot.readString();
+          if (field.type == TType.STRUCT) {
+            this.success = new Result();
+            this.success.read(iprot);
           } else {
             TProtocolUtil.skip(iprot, field.type);
           }
@@ -926,7 +928,7 @@ public class HelloWorldService {
     oprot.writeStructBegin(STRUCT_DESC);
     if (this.isSetSuccess()) {
       oprot.writeFieldBegin(SUCCESS_FIELD_DESC);
-      oprot.writeString(this.success);
+      this.success.write(oprot);
       oprot.writeFieldEnd();
     }
     oprot.writeFieldStop();
@@ -935,7 +937,7 @@ public class HelloWorldService {
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("sayHello_result(");
+    StringBuilder sb = new StringBuilder("queryModuleInfo_result(");
     boolean first = true;
     sb.append("success:");
     if (this.success == null) {

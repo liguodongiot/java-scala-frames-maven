@@ -30,7 +30,7 @@
                     <thriftSourceRoot>src/main/resources/thrift/hello</thriftSourceRoot>
                     <outputDirectory>src/main/thrift-code/</outputDirectory>
                     <includes>
-                        <include>demo.thrift</include>
+                        <include>module.thrift</include>
                         <!--<include>result.thrift</include>-->
                     </includes>
 
