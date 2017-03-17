@@ -31,7 +31,7 @@ public class BlockingQueueCommunication {
 
     static class Bussiness{
         BlockingQueue<Integer> queue1 = new ArrayBlockingQueue<Integer>(1);
-        BlockingQueue<Integer> queue2 = new ArrayBlockingQueue<Integer>(2);
+        BlockingQueue<Integer> queue2 = new ArrayBlockingQueue<Integer>(1);
 
         //匿名构造方法，在任何构造方法之前运行。
         {

@@ -46,8 +46,9 @@
                         <include>event-logger-thrift</include>
                     </dependencyIncludes>
                     <!-- tell scrooge to not to build the extracted thrift files (defaults to true) -->
-                    <buildExtractedThrift>false</buildExtractedThrift>
+                    <!--<buildExtractedThrift>false</buildExtractedThrift>-->
                 </configuration>
+
                 <executions>
                     <execution>
                         <id>thrift-sources</id>
