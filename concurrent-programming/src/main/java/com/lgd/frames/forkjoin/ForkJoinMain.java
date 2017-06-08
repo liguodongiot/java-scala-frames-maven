@@ -93,7 +93,8 @@ public class ForkJoinMain {
         }
 
         protected Long compute(){
-            System.out.println("Thread ID: " + Thread.currentThread().getId());
+            System.out.println("Thread ID: " + Thread.currentThread().getId() +
+                    ",Thread Name: " + Thread.currentThread().getName());
 
             Long sum = 0l;
 
